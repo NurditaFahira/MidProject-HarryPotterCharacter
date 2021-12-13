@@ -12,15 +12,19 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+//        val fragment: Fragment = HomeFragment()
+//        val fragmentManager : FragmentManager = supportFragmentManager
+//        val fragmentTransaction : FragmentTransaction = fragmentManager.beginTransaction()
+//        if(savedInstanceState == null){
+//            fragmentTransaction.replace(R.id.container_fragment, fragment)
+//            fragmentTransaction.commitNow()
+//        }
+
         val fragment: Fragment = HomeFragment()
-        val fragmentManager : FragmentManager = supportFragmentManager
-        val fragmentTransaction : FragmentTransaction = fragmentManager.beginTransaction()
-
-        if(savedInstanceState == null){
-            fragmentTransaction.replace(R.id.container_fragment, fragment)
-            fragmentTransaction.commitNow()
-        }
-
+        val fragmentManager: FragmentManager = supportFragmentManager
+        val fragmentTransaction: FragmentTransaction = fragmentManager.beginTransaction()
+        fragmentTransaction.replace(R.id.container_fragment, fragment)
+        fragmentTransaction.addToBackStack(null)
+        fragmentTransaction.commit()
     }
-
 }

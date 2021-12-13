@@ -7,6 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.midprojectharrypotternurditafahira.R
 import kotlinx.android.synthetic.main.fragment_home.*
 
@@ -36,13 +37,10 @@ class HomeFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         Log.d("HomeFragment", "onViewCreated Called")
 
+        recyview_home.setHasFixedSize(true)
+        recyview_home.layoutManager = LinearLayoutManager(context)
+        viewModel.getDataFromApi(recyview_home)
 
-        texttv.text = ""+viewModel.number
-
-        addBtn.setOnClickListener{
-            viewModel.number++;
-            texttv.text=""+viewModel.number
-        }
     }
 
     override fun onDestroy() {
